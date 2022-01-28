@@ -78,12 +78,12 @@ public class TagMain {
         String name = console.nextLine().trim();
 
         // tag the victim, if possible
-        if (manager.losersContains(name)) {
+        if (manager.losersContains(name.toLowerCase())) {
             System.out.println(name + " is already tagged");
-        } else if (!manager.tagRingContains(name)) {
+        } else if (!manager.tagRingContains(name.toLowerCase())) {
             System.out.println("Unknown person.");
         } else {
-            manager.tag(name);
+            manager.tag(name.toLowerCase());
         }
         System.out.println();
     }
