@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f338a42d-58c7-46a2-bbbf-7f78377be445" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TagCS3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TagCS3/TagMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TagCS3/TagMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TagCS3/TagManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TagCS3/TagManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TagCS3/TagNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TagCS3/TagNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TagMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TagManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +13,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="24I7BBTANoPHEGHBHKei81pwIEM" />
   <component name="ProjectViewState">

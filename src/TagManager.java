@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Objects;
-//TODO:comment all code, review variable names, check line lengths (<100 chars)
 
 /**
  * The TagManager class creates and manages two linked lists: players alive and players tagged.
@@ -12,7 +11,7 @@ public class TagManager {
     /**
      * first is a TagNode instance that stores the first player in the tag ring.
      */
-    TagNode first;
+    TagNode firstPlayer;
     /**
      * firstLoser is a TagNode instance that stores the most recently tagged player.
      */
@@ -28,13 +27,13 @@ public class TagManager {
         }
         // Set the first node in the tag ring to the first player in nameList.
         TagNode firstNode = new TagNode((String) nameList.toArray()[0]);
-        this.first = firstNode;
-        TagNode last = firstNode;
+        this.firstPlayer = firstNode;
+        TagNode mostRecent = firstNode;
         // Go through the rest of the names in nameList, set previous node's next reference to the new node, and set the last TagNode to the new node.
         for (int i = 1; i < nameList.toArray().length; i++) {
             TagNode newNode = new TagNode((String) nameList.toArray()[i]);
-            last.next = newNode;
-            last = newNode;
+            mostRecent.next = newNode;
+            mostRecent = newNode;
         }
     }
 
@@ -42,12 +41,12 @@ public class TagManager {
      * Prints each player in the tag ring and who they are stalking.
      */
     public void printTagRing() {
-        TagNode current = first;
+        TagNode current = firstPlayer;
         // Iterate through all players in the tag ring and println their names and who they are stalking.
         while (current != null) {
             // If the current TagNode is the last one, go back to the first TagNode.
             if (current.next == null) {
-                System.out.println("  " + current.name + " is stalking " + first.name);
+                System.out.println("  " + current.name + " is stalking " + firstPlayer.name);
             }
             else {
                 System.out.println("  " + current.name + " is stalking " + current.next.name);
@@ -74,7 +73,7 @@ public class TagManager {
      * @return Boolean - whether name is part of the tag ring.
      */
     public boolean tagRingContains(String name) {
-        TagNode current = first;
+        TagNode current = firstPlayer;
         // Iterate through all players in the tag ring and if the current TagNode matches the given name, return true.
         while (current != null) {
             if (Objects.equals(current.name.toLowerCase(), name)) return true;
@@ -105,7 +104,7 @@ public class TagManager {
      * @return Whether there is only one player in the tag ring, meaning the game is over.
      */
     public boolean isGameOver() {
-        return first.next == null;
+        return firstPlayer.next == null;
     }
 
     /**
@@ -116,30 +115,35 @@ public class TagManager {
         if (! isGameOver()) {
             return null;
         }
-        return first.name;
+        return firstPlayer.name;
     }
 
     /**
      * Tags a given player name by moving the player from the tag ring to the losers.
      * @param name String storing the given player name to tag.
      */
-    //TODO:COMMENT THIS
     public void tag(String name) {
+        // Throw errors if the game is over or if the given name is not in the tag ring
         if (isGameOver()) {
             throw new IllegalStateException();
         }
         else if (! tagRingContains(name)) {
             throw new IllegalArgumentException();
         }
-        TagNode current = first;
+        TagNode current = firstPlayer;
+        // Iterate through all players in the tag ring
         while (current != null) {
+            // Change the local tagged TagNode to the next player
+            // tagged is changed each iteration so that the code that checks whether the current tagged player matches the given name works even if the tagged player is the first player.
             TagNode tagged = current.next;
-            if (tagged == null) tagged = first;
+            // Set the tagged player to the first player if the tagger is the last player
+            if (tagged == null) tagged = firstPlayer;
+            // If the current tagged player matches the given name
             if (Objects.equals(tagged.name.toLowerCase(), name)) {
                 // If tagged player is the first node, change the first node to the next player
                 // and set the tagger's next reference to null
-                if (tagged == first) {
-                    first = tagged.next;
+                if (tagged == firstPlayer) {
+                    firstPlayer = tagged.next;
                     current.next = null;
                 }
                 // If tagged player isn't the first node, set the tagger's
