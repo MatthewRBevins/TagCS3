@@ -76,7 +76,7 @@ public class TagManager {
         TagNode current = firstPlayer;
         // Iterate through all players in the tag ring and if the current TagNode matches the given name, return true.
         while (current != null) {
-            if (Objects.equals(current.name.toLowerCase(), name)) return true;
+            if (Objects.equals(current.name.toLowerCase(), name.toLowerCase())) return true;
             current = current.next;
         }
         // If no matches were found, return false.
@@ -92,7 +92,7 @@ public class TagManager {
         TagNode current = firstLoser;
         // Iterate through all losers and if the current TagNode matches the given name, return true.
         while (current != null) {
-            if (Objects.equals(current.name.toLowerCase(), name)) return true;
+            if (Objects.equals(current.name.toLowerCase(), name.toLowerCase())) return true;
             current = current.next;
         }
         // If no matches were found, return false;
@@ -127,7 +127,7 @@ public class TagManager {
         if (isGameOver()) {
             throw new IllegalStateException();
         }
-        else if (! tagRingContains(name)) {
+        else if (! tagRingContains(name.toLowerCase())) {
             throw new IllegalArgumentException();
         }
         TagNode current = firstPlayer;
@@ -139,7 +139,7 @@ public class TagManager {
             // Set the tagged player to the first player if the tagger is the last player
             if (tagged == null) tagged = firstPlayer;
             // If the current tagged player matches the given name
-            if (Objects.equals(tagged.name.toLowerCase(), name)) {
+            if (Objects.equals(tagged.name.toLowerCase(), name.toLowerCase())) {
                 // If tagged player is the first node, change the first node to the next player
                 // and set the tagger's next reference to null
                 if (tagged == firstPlayer) {

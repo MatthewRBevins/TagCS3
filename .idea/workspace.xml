@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f338a42d-58c7-46a2-bbbf-7f78377be445" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TagMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TagManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TagManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
