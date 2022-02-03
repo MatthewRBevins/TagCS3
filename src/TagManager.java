@@ -26,12 +26,12 @@ public class TagManager {
             throw new IllegalArgumentException();
         }
         // Set the first node in the tag ring to the first player in nameList.
-        TagNode firstNode = new TagNode((String) nameList.toArray()[0]);
+        TagNode firstNode = new TagNode((String) nameList.get(0));
         this.firstPlayer = firstNode;
         TagNode mostRecent = firstNode;
         // Go through the rest of the names in nameList, set previous node's next reference to the new node, and set the last TagNode to the new node.
-        for (int i = 1; i < nameList.toArray().length; i++) {
-            TagNode newNode = new TagNode((String) nameList.toArray()[i]);
+        for (int i = 1; i < nameList.size(); i++) {
+            TagNode newNode = new TagNode((String) nameList.get(i));
             mostRecent.next = newNode;
             mostRecent = newNode;
         }
@@ -67,20 +67,24 @@ public class TagManager {
         }
     }
 
+    public boolean contains(String name, TagNode ring) {
+        TagNode current = ring;
+        // Iterate through all losers and if the current TagNode matches the given name, return true.
+        while (current != null) {
+            if (current.name.toLowerCase().equals(name.toLowerCase())) return true;
+            current = current.next;
+        }
+        // If no matches were found, return false;
+        return false;
+    }
+
     /**
      * Checks if the given name is part of the tag ring.
      * @param name String storing the given player name to check.
      * @return Boolean - whether name is part of the tag ring.
      */
     public boolean tagRingContains(String name) {
-        TagNode current = firstPlayer;
-        // Iterate through all players in the tag ring and if the current TagNode matches the given name, return true.
-        while (current != null) {
-            if (Objects.equals(current.name.toLowerCase(), name.toLowerCase())) return true;
-            current = current.next;
-        }
-        // If no matches were found, return false.
-        return false;
+        return contains(name, firstPlayer);
     }
 
     /**
@@ -89,14 +93,7 @@ public class TagManager {
      * @return Boolean - whether name is part of the losers.
      */
     public boolean losersContains(String name) {
-        TagNode current = firstLoser;
-        // Iterate through all losers and if the current TagNode matches the given name, return true.
-        while (current != null) {
-            if (Objects.equals(current.name.toLowerCase(), name.toLowerCase())) return true;
-            current = current.next;
-        }
-        // If no matches were found, return false;
-        return false;
+        return contains(name, firstLoser);
     }
 
     /**
